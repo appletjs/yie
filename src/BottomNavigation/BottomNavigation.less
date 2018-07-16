@@ -1,0 +1,75 @@
+@import "../shared/definitions";
+
+.ui-bottom-navigation-colors(@color) {
+  background-color: @color;
+
+  .ui-bottom-navigation__item {
+    color: #fff;
+  }
+}
+
+.ui-bottom-navigation {
+  box-shadow: 0 3px 14px 2px rgba(0,0,0,0.12);
+  display: flex;
+  left: 0;
+  bottom: 0;
+  justify-content: center;
+  -webkit-transform: translate(0, 60px);
+  transform: translate(0, 60px);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.5, 1);
+  width: 100%;
+  background-color: @ui-color-light;
+
+  &.absolute {
+    position: absolute;
+  }
+
+  &.fixed {
+    position: fixed;
+  }
+
+  &__item {
+    display: block;
+    flex: 1;
+    .v-box();
+    .box-center;
+    user-select: none;
+    height: @ui-th;
+    color: @ui-color-dark-neutral;
+    opacity: .5;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+    &.selected {
+      opacity: 1;
+      color: @ui-color-accent;
+    }
+
+    &-text,
+    &-icon {
+      pointer-events: none;
+    }
+
+    &-text {
+      color: inherit;
+      font-size: 12px;
+    }
+
+    &-icon svg {
+      fill: currentColor;
+    }
+
+    &.selected &-text {
+      font-size: 14px;
+    }
+  }
+
+  // Colors
+  // ==============================
+
+  &.danger { .ui-bottom-navigation-colors(@ui-color-danger); }
+  &.warning { .ui-bottom-navigation-colors(@ui-color-warning); }
+  &.info { .ui-bottom-navigation-colors(@ui-color-info); }
+  &.success { .ui-bottom-navigation-colors(@ui-color-success); }
+  &.primary { .ui-bottom-navigation-colors(@ui-color-primary); }
+  &.accent { .ui-bottom-navigation-colors(@ui-color-accent); }
+}

@@ -1,0 +1,74 @@
+@import "../shared/definitions";
+
+.toolbar-colors(@background, @foreground: @ui-color-light) {
+  color: @foreground;
+  background-color: @background;
+}
+
+.ui-toolbar {
+  .h-box();
+  align-items: center;
+  height: @ui-th;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  &.shadowed {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  > .ui-button,
+  &-menu > .ui-button {
+    color: inherit;
+  }
+
+  &-navigation {
+    margin-left: -12px !important;
+    margin-right: 12px !important;
+  }
+
+  &-title {
+    flex: 1;
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+
+  &-actions {
+    .h-box();
+    .box-center();
+
+    &:last-child {
+      margin-right: -12px;
+    }
+  }
+
+  &-menu {
+    position: relative;
+    margin-right: -12px;
+
+    .ui-menu {
+      min-width: 120px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  // Colors
+  // ====================
+
+  &.primary { .toolbar-colors(@ui-color-primary); }
+  &.accent { .toolbar-colors(@ui-color-accent); }
+  &.danger { .toolbar-colors(@ui-color-danger); }
+  &.warning { .toolbar-colors(@ui-color-warning); }
+  &.info { .toolbar-colors(@ui-color-info); }
+  &.success { .toolbar-colors(@ui-color-success); }
+}

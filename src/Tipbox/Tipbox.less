@@ -1,0 +1,83 @@
+@import "../shared/definitions";
+
+.ui-tipbox {
+  width: 100%;
+  height: auto;
+  .v-box();
+  .box-center();
+  min-height: 0;
+  background: #fff;
+  //box-shadow: 0 14px 56px #999;
+  //border-radius: @ui-br;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &-header {
+    width: 100%;
+    .h-box();
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-title {
+    flex: 1;
+    margin: 0;
+    padding: 24px 24px 20px;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 1.3125rem;
+    font-weight: 500;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.16667em;
+  }
+
+  &-dismiss {
+    margin-right: 8px;
+  }
+
+  &-body {
+    width: 100%;
+  }
+
+  &-footer {
+    position: relative;
+    .h-box();
+    align-items: center;
+    width: 100%;
+    margin-top: 8px;
+    background-color: #fafafa;
+    border-radius: 0 0 @ui-br @ui-br;
+    overflow: hidden;
+
+    &:before {
+      display: block;
+      content: '';
+      background-color: #ddd;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      transform: scaleY(.5);
+    }
+
+    .ui-tipbox-button {
+      position: relative;
+      border-radius: 0;
+      flex: 1;
+    }
+  }
+
+  &-divider {
+    width: 1px;
+    height: 44px;
+    transform: scaleX(.5);
+    display: block;
+    background-color: #ddd;
+  }
+
+  &-button {
+    flex: 1;
+  }
+}

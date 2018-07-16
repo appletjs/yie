@@ -1,0 +1,92 @@
+@import "../shared/definitions";
+
+.ui-loading-indicator {
+  display: flex;
+  .box-center();
+
+  > .animation {
+    .square(16px);
+    border: 2px solid transparent;
+    .indicator-colors(currentColor);
+    border-radius: 50%;
+    animation: ui-loading-indicator-rotating .7s linear infinite;
+  }
+
+
+  // inline
+  // ====================
+
+  &.inline {
+    display: inline-flex;
+  }
+
+  // colors
+  // ====================
+
+  &.primary > .animation { .indicator-colors(@ui-color-primary); }
+  &.accent > .animation { .indicator-colors(@ui-color-accent); }
+  &.danger > .animation { .indicator-colors(@ui-color-danger); }
+  &.warning > .animation { .indicator-colors(@ui-color-warning); }
+  &.info > .animation { .indicator-colors(@ui-color-info); }
+  &.success > .animation { .indicator-colors(@ui-color-success); }
+
+  // sizes
+  // ====================
+
+  &.small > .animation {
+    .square(10px);
+  }
+
+  &.big > .animation {
+    .square(24px);
+    border-width: 3px;
+  }
+
+  // Overlay
+  // ====================
+
+  &.overlay {
+    .overlay();
+    z-index: 1;
+
+    //> .animation {
+    //  margin-bottom: 32px;
+    //}
+
+    &:not(.transparent) {
+      background-color: lighten(@ui-color-light, 95%);
+    }
+
+    &.fixed {
+      position: fixed;
+    }
+  }
+}
+
+@keyframes ui-loading-indicator-rotating {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+// dark mode
+// ====================
+
+.dark-mode {
+  .ui-loading-indicator > .animation {
+    .indicator-colors(@ui-color-dark-neutral);
+  }
+
+  .ui-loading-indicator.accent > .animation {
+    .indicator-colors(lighten(@ui-color-accent, 60%));
+  }
+
+  .ui-loading-indicator.overlay:not(.transparent) {
+    background-color: lighten(@ui-color-danger, 95%);
+  }
+}

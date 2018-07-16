@@ -1,0 +1,10 @@
+.idea
+docs
+node_modules
+scripts
+src
+.babelrc
+.editorconfig
+.npmignore
+package-lock.json
+tsconfig.json

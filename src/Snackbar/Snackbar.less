@@ -1,0 +1,115 @@
+@import "../shared/definitions";
+
+.ui-snackbar {
+  align-items: center;
+  background-color: #323232;
+  box-shadow: 0 1px 3px fade(black, 0.12), 0 1px 2px fade(black, 0.24);
+  display: inline-flex;
+  font-family: inherit;
+  max-width: 568px;
+  min-height: 48px;
+  min-width: 288px;
+  padding: 14px 24px;
+  position: absolute;
+
+  // default position
+  bottom: 0;
+  left: 0;
+
+  &__message {
+    color: white;
+    cursor: default;
+    font-size: 14px;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+
+  &__action {
+    margin: -9px -12px;
+    padding-left: 48px;
+
+    &-button {
+      margin: 0;
+      min-height: initial;
+      min-width: initial;
+    }
+  }
+
+  // Mobile Environment
+  // ==============================
+
+  &.in-mobile {
+    width: 100%;
+  }
+
+  // Floating
+  // ==============================
+
+  &.floating {
+    border-radius: @ui-br;
+    margin: 8px;
+
+    &.in-mobile {
+      width: auto;
+      right: 0;
+    }
+  }
+
+  // Status
+  // ==============================
+
+  &.danger { background-color: @ui-color-danger; }
+  &.warning { background-color: @ui-color-warning; }
+  &.info { background-color: @ui-color-info; }
+  &.success { background-color: @ui-color-success; }
+  &.danger &__action-button { color: @ui-color-light; }
+  &.warning &__action-button { color: @ui-color-light; }
+  &.info &__action-button { color: @ui-color-light; }
+  &.success &__action-button { color: @ui-color-light; }
+
+  // Animations
+  // ==============================
+
+  &-slide {
+    &-enter-active,
+    &-leave-active {
+      transition: transform .4s ease, margin .4s ease;
+    }
+
+    &-enter,
+    &-leave-active,
+    &-leave-to {
+      transform: translateY(100%);
+
+      &.floating {
+        margin: 0;
+      }
+    }
+
+    &-enter-to,
+    &-enter-active,
+    &-leave {
+      transform: translateY(0);
+    }
+  }
+
+  &-fade {
+    &-enter-active,
+    &-leave-active {
+      transition: opacity 0.4s ease;
+    }
+
+    &-enter,
+    &-leave-active,
+    &-leave-to {
+      opacity: 0;
+    }
+
+    &-enter-to,
+    &-enter-active,
+    &-leave {
+      opacity: 1;
+    }
+  }
+}
+

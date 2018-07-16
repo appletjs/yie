@@ -1,0 +1,30 @@
+.app-layout {
+  position: static;
+  width: 100%;
+  height: 100%;
+
+  &-toolbar {
+    transition: all 0.16s;
+
+    // transition
+    // ====================
+
+    &-enter,
+    &-leave-to {
+      transform: translateY(-100%);
+    }
+
+    &-enter-active {
+      transform: translateY(0);
+    }
+
+    &-leave-active {
+      transform: translateY(-100%);
+    }
+
+    &-enter-to,
+    &-leave {
+      transform: translateY(0);
+    }
+  }
+}

@@ -1,0 +1,157 @@
+@import "../shared/definitions";
+
+.ui-sheet {
+  z-index: 200;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  box-sizing: border-box;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &.floating {
+    padding: 16px;
+  }
+
+  &.floating &-body {
+    border-radius: @ui-br;
+  }
+
+  &.top,
+  &.bottom {
+    .v-box();
+  }
+
+  &.left,
+  &.right {
+    .h-box();
+  }
+
+  &.right,
+  &.bottom {
+    justify-content: flex-end;
+  }
+
+  &.left,
+  &.top {
+    justify-content: flex-start;
+  }
+
+  &.top &-body,
+  &.bottom &-body {
+    width: 100%;
+    min-height: 0;
+  }
+
+  &.left &-body,
+  &.right &-body {
+    height: 100%;
+    min-width: 0;
+  }
+
+  &-body {
+    background: #fff;
+  }
+}
+
+.ui-sheet-enter,
+.ui-sheet-leave-to {
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+
+  &.dimmed {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .ui-sheet-body {
+    box-shadow: none;
+  }
+}
+
+.ui-sheet-enter,
+.ui-sheet-leave-to,
+.ui-sheet-leave-active {
+  &.top .ui-sheet-body {
+    transform: translateY(-100%);
+  }
+
+  &.bottom .ui-sheet-body {
+    transform: translateY(100%);
+  }
+
+  &.right .ui-sheet-body {
+    transform: translateX(100%);
+  }
+
+  &.left .ui-sheet-body {
+    transform: translateX(-100%);
+  }
+}
+
+.ui-sheet-enter-active {
+  opacity: 1;
+  visibility: visible;
+  transition: all 300ms;
+
+  &.dimmed {
+    background-color: rgba(0, 0, 0, .2);
+    transition: background-color 300ms;
+  }
+
+  .ui-sheet-body {
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.16), 0 0 10px 0 rgba(0,0,0,.12);
+    transition: all 160ms;
+  }
+}
+
+.ui-sheet-leave-active {
+  z-index: 101;
+  opacity: 1;
+  visibility: visible;
+  transition: all 300ms;
+
+  &.dimmed {
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 300ms;
+  }
+
+  .ui-sheet-body {
+    box-shadow: none;
+    transition: all 160ms;
+  }
+}
+
+.ui-sheet-enter-to,
+.ui-sheet-leave {
+  z-index: 100;
+  opacity: 1;
+  visibility: visible;
+
+  &.dimmed {
+    background-color: rgba(0, 0, 0, .2);
+  }
+
+  .ui-sheet-body {
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.16), 0 0 10px 0 rgba(0,0,0,.12);
+  }
+}
+
+.ui-sheet-enter-to,
+.ui-sheet-leave,
+.ui-sheet-enter-active {
+  &.bottom .ui-sheet-body,
+  &.top .ui-sheet-body {
+    transform: translateY(0);
+  }
+
+  &.left .ui-sheet-body,
+  &.right .ui-sheet-body {
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,35 @@
+@import "../shared/definitions";
+
+.ui-avatar {
+  position: relative;
+  display: inline-flex;
+  .box-center();
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+
+  &.primary { background: @ui-color-primary; color: #fff; }
+  &.accent { background: @ui-color-accent; color: #fff; }
+  &.danger { background: @ui-color-danger; color: #fff; }
+  &.warning { background: @ui-color-warning; color: #fff; }
+  &.info { background: @ui-color-info; color: #fff; }
+  &.success { background: @ui-color-success; color: #fff; }
+
+  img,
+  .ui-loading-indicator,
+  .svg-icon {
+    border-radius: 50%;
+    display: inline-flex;
+    width: inherit;
+    height: inherit;
+  }
+
+  &.tile {
+    &,
+    .ui-loading-indicator,
+    img,
+    .svg-icon {
+      border-radius: 0;
+    }
+  }
+}

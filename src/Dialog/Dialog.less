@@ -1,0 +1,91 @@
+@import "../shared/definitions";
+
+.ui-dialog {
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  .v-box;
+  .box-center;
+
+  .ui-tipbox {
+    width: 80vw;
+    min-width: 36vm;
+    border-radius: @ui-br;
+    box-shadow: 0 14px 56px #999;
+  }
+}
+
+
+.ui-dialog-enter,
+.ui-dialog-leave-to {
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+
+  &.dimmed {
+    background-color: rgba(0,0,0,0);
+  }
+
+  .ui-tipbox {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+
+.ui-dialog-enter-active {
+  z-index: 100;
+  opacity: 1;
+  visibility: visible;
+  transition: all 300ms;
+
+  &.dimmed {
+    background-color: rgba(0,0,0,.2);
+    transition: background-color 300ms;
+  }
+
+  .ui-tipbox {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 300ms;
+  }
+}
+
+
+.ui-dialog-leave-active {
+  z-index: 100;
+  opacity: 1;
+  visibility: visible;
+  transition: all 300ms;
+
+  &.dimmed {
+    background-color: rgba(0,0,0,0);
+    transition: background-color 300ms;
+  }
+
+  .ui-tipbox {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 300ms;
+  }
+}
+
+.ui-dialog-enter-to,
+.ui-dialog-leave {
+  z-index: 100;
+  opacity: 1;
+  visibility: visible;
+
+  &.dimmed {
+    background-color: rgba(0,0,0,.2);
+  }
+
+  .ui-tipbox {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

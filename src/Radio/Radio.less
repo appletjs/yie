@@ -1,0 +1,131 @@
+@import "../shared/definitions";
+
+@ui-radio-size: 20px;
+@ui-radio-stroke: 2px;
+@ui-radio-focus-ring-size: @ui-radio-size * 2.1;
+@ui-radio-label-font-size: 16px;
+
+.ui-radio-color(@color) {
+  &.checked:not(.disabled) {
+    .ui-radio__outer-circle {
+      border-color: @color;
+    }
+    .ui-radio__inner-circle {
+      background-color: @color;
+    }
+    .ui-radio__focus-ring {
+      background-color: fade(@color, 0.2);
+    }
+  }
+}
+
+.ui-radio {
+  .h-box();
+  align-items: center;
+  font-family: inherit;
+  font-size: @ui-radio-label-font-size;
+  height: @ui-radio-size;
+  margin: 0;
+
+  &:hover:not(.disabled):not(.checked) {
+    .ui-radio__outer-circle {
+      border-color: @ui-color-dark-neutral;
+    }
+  }
+
+  &.checked &__inner-circle {
+    opacity: 1;
+    transform: scale(.5);
+    z-index: 0;
+  }
+
+  &.disabled {
+    opacity: .5;
+  }
+
+  &.disabled &__input-wrapper,
+  &.disabled &__label-text {
+    cursor: default;
+  }
+
+  &__input {
+    &-wrapper {
+      cursor: pointer;
+      position: relative;
+      .square(@ui-radio-size);
+    }
+
+    appearance: none;
+    left: 0;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    .square(1px);
+  }
+
+  &__outer-circle {
+    background-color: transparent;
+    border-radius: 50%;
+    border: @ui-radio-stroke solid @ui-color-dark-neutral;
+    .square(@ui-radio-size);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: border-color .2s;
+  }
+
+  &__inner-circle {
+    background-color: @ui-color-dark-neutral;
+    border-radius: 50%;
+    .square(@ui-radio-size);
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    transform: scale(1.2);
+    transition-duration: .3s;
+    transition-property: transform, opacity, background-color;
+    z-index: -1;
+  }
+
+  &__focus-ring {
+    background-color: fade(black, 0.1);
+    border-radius: 50%;
+    position: absolute;
+    left: -((@ui-radio-focus-ring-size - @ui-radio-size)/ 2);
+    top: -((@ui-radio-focus-ring-size - @ui-radio-size)/ 2);
+    .square(@ui-radio-focus-ring-size);
+    opacity: 0;
+    transform: scale(0);
+    transition: background-color 0.2s ease, transform 0.15s ease, opacity 0.15s ease;
+    z-index: -1;
+  }
+
+  &__label-text {
+    cursor: pointer;
+    font-size: @ui-radio-label-font-size;
+    margin-left: 8px;
+  }
+
+  // Label Position
+  // ==============================
+
+  &--label-position-left &__label-text {
+    margin-left: 0;
+    margin-right: auto;
+    order: -1;
+  }
+
+
+  // Colors
+  // ==============================
+
+  &.checked.primary { .ui-radio-color(@ui-color-primary); }
+  &.checked.accent { .ui-radio-color(@ui-color-accent); }
+  &.checked.danger { .ui-radio-color(@ui-color-danger); }
+  &.checked.warning { .ui-radio-color(@ui-color-warning); }
+  &.checked.info { .ui-radio-color(@ui-color-info); }
+  &.checked.success { .ui-radio-color(@ui-color-success); }
+}
+

@@ -1,0 +1,214 @@
+@import "../shared/definitions";
+
+@lightened: lighten(@ui-color-dark, 50%);
+
+.input-colors(@color) {
+  .ui-input-animation {
+    background: @color;
+  }
+
+  &.focused &-content > &-left-loading .animation,
+  &.focused &-content > &-right-loading .animation {
+    .indicator-colors(@color);
+  }
+
+  &.focused &-left-icon svg,
+  &.focused &-right-icon svg {
+    fill: darken(@color, 20%);
+  }
+}
+
+.ui-input {
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  width: auto;
+  min-width: 200px;
+
+  &-content {
+    .h-box();
+    .box-center();
+    padding: 0 10px;
+    border: 1px solid @ui-color-light-neutral;
+    color: @ui-color-dark;
+    border-radius: @ui-br;
+    transition: background .3s;
+    position: relative;
+    background-color: lighten(@ui-color-light-neutral, 70%);
+  }
+
+  &-field {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 14px;
+    color: inherit;
+    padding: 0;
+    width: 100%;
+    display: block;
+    border: none;
+    background: transparent;
+    outline: none;
+
+    &:not(textarea) {
+      height: 30px;
+    }
+
+    &::placeholder {
+      color: @lightened;
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    textarea& {
+      padding: 8px 10px;
+      resize: vertical;
+      min-width: 30px;
+      box-sizing: border-box;
+      line-height: 18px;
+    }
+  }
+
+  // icon
+  // ----
+
+  &-left-icon svg,
+  &-right-icon svg {
+    fill: @lightened;
+    transition: fill .3s;
+  }
+
+  &-left-icon {
+    margin-right: 6px;
+  }
+
+  &-right-icon {
+    margin-left: 6px;
+  }
+
+  // loading
+  // -------
+
+  &-left-loading .animation,
+  &-right-loading .animation{
+    .indicator-colors(@lightened);
+  }
+
+  &-left-loading {
+    margin-right: 8px;
+  }
+
+  &-right-loading {
+    margin-left: 8px;
+  }
+
+  // border
+  // ------
+
+  &-animation {
+    position: absolute;
+    bottom: -1px;
+    left: 30%;
+    right: 30%;
+    opacity: 0;
+    height: 2px;
+    pointer-events: none;
+    transition: left .25s, right .15s, opacity .15s;
+  }
+
+  // Focused
+  // ====================
+
+  &.focused:not(.flat) &-content {
+    background: @ui-color-light;
+  }
+
+  &.focused:not(.flat) &-animation {
+    left: 0;
+    right: 0;
+    opacity: 1;
+  }
+
+  // Colors
+  // ====================
+
+  &.primary {.input-colors(@ui-color-primary); }
+  &.accent {.input-colors(@ui-color-accent); }
+  &.danger {.input-colors(@ui-color-danger); }
+  &.warning {.input-colors(@ui-color-warning); }
+  &.info {.input-colors(@ui-color-info); }
+  &.success {.input-colors(@ui-color-success); }
+
+  // Flat
+  // ====================
+
+  &.flat &-content {
+    border-color: transparent;
+    background: transparent;
+  }
+
+  &.flat &-animation {
+    display: none;
+  }
+
+  // Disabled
+  // ====================
+
+  &.disabled {
+    opacity: .5;
+  }
+
+  // Block
+  // ====================
+
+  &.block {
+    width: 100%;
+    min-width: 100px;
+  }
+
+  // Sizes
+  // =====================
+
+  &.big &-content {
+    padding: 0 14px;
+  }
+
+  &.big &-field {
+    font-size: 16px;
+
+    &:not(textarea) {
+      height: 42px;
+    }
+
+    textarea& {
+      padding: 14px 0;
+    }
+  }
+
+  &.big &-left-icon {
+    margin-right: 10px;
+  }
+
+  &.big &-right-icon {
+    margin-left: 10px;
+  }
+}
+
+.dark-mode {
+  .ui-input-content {
+    border-color: @ui-color-dark;
+    color: @ui-color-light;
+  }
+
+  .ui-input-field {
+    color: @ui-color-light;
+
+    &::placeholder {
+      color: lighten(@lightened, 30%);
+    }
+  }
+}

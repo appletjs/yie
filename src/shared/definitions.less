@@ -1,0 +1,87 @@
+// Colors
+// ========================================
+
+@ui-color-light        : #fff;
+@ui-color-light-neutral: #e4f5ef;
+@ui-color-dark         : #2c3e50;
+@ui-color-dark-neutral : #4f6f7f;
+@ui-color-darker       : #1d2935;
+@ui-color-primary      : #2196f3;
+@ui-color-accent       : #6806c1;
+@ui-color-danger       : #e83030;
+@ui-color-warning      : #ea6e00;
+@ui-color-info         : #03c2e6;
+@ui-color-success      : #42b983;
+
+
+// Variables
+// ========================================
+
+@ui-br: 3px;  // border-radius
+@ui-th: 56px; // toolbar height
+
+
+// Mixins
+// ========================================
+
+.ellipsis() {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bounds(@distance) {
+  top: @distance;
+  bottom: @distance;
+  left: @distance;
+  right: @distance;
+}
+
+.square(@size) {
+  width: @size;
+  height: @size;
+}
+
+.overlay() {
+  position: absolute;
+  .bounds(0);
+}
+
+.flex-box() {
+  display: flex;
+
+  & > * {
+    flex: auto 0 0;
+  }
+}
+
+.h-box() {
+  .flex-box();
+  flex-direction: row;
+}
+
+.v-box() {
+  .flex-box();
+  flex-direction: column;
+}
+
+.box-center() {
+  align-items: center;
+  justify-content: center;
+}
+
+.color(@c) {
+  color: @c;
+
+  .svg-icon svg {
+    fill: @c !important;
+  }
+}
+
+
+// loading/indicator
+.indicator-colors(@color) {
+  border-right-color: @color;
+  border-bottom-color: @color;
+}

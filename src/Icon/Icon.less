@@ -1,0 +1,69 @@
+@import "../shared/definitions";
+
+.svg-icon {
+  display: inline-block;
+  .square(16px);
+  vertical-align: middle;
+
+  svg {
+    .square(100%);
+    fill: currentColor;
+    pointer-events: none;
+  }
+
+  // Colors
+  // =============================
+
+  &.primary svg {
+    fill: @ui-color-primary;
+  }
+
+  &.accent svg {
+    fill: @ui-color-accent;
+  }
+
+  &.danger svg {
+    fill: @ui-color-danger;
+  }
+
+  &.warning svg {
+    fill: @ui-color-warning;
+  }
+
+  &.info svg {
+    fill: @ui-color-info;
+  }
+
+  &.success svg {
+    fill: @ui-color-success;
+  }
+
+
+  // Sizes
+  // =============================
+
+  // Size
+  &.small {
+    .square(12px);
+  }
+
+  &.medium {
+    .square(18px);
+  }
+
+  &.big {
+    .square(24px);
+  }
+
+  &.large {
+    .square(32px);
+  }
+
+  &.huge {
+    .square(42px);
+  }
+
+  &.gigantic {
+    .square(42px);
+  }
+}

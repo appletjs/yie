@@ -1,0 +1,70 @@
+@import "../shared/definitions";
+
+.progress-bar-colors(@foreground, @background) {
+  background-color: @background;
+
+  .ui-progress-bar__bar {
+    background: @foreground;
+  }
+}
+
+.ui-progress-bar {
+  height: 3px;
+  position: relative;
+  .progress-bar-colors(@ui-color-dark, @ui-color-light-neutral);
+
+  &__bar {
+    height: 100%;
+  }
+
+  // Colors
+  // ====================
+
+  &.primary { .progress-bar-colors(@ui-color-primary, @ui-color-light-neutral); }
+  &.accent { .progress-bar-colors(@ui-color-accent, @ui-color-light-neutral); }
+  &.danger { .progress-bar-colors(@ui-color-danger, @ui-color-light-neutral); }
+  &.warning { .progress-bar-colors(@ui-color-warning, @ui-color-light-neutral); }
+  &.info { .progress-bar-colors(@ui-color-info, @ui-color-light-neutral); }
+  &.success { .progress-bar-colors(@ui-color-success, @ui-color-light-neutral); }
+
+  // Indeterminate
+  // ====================
+
+  &.indeterminate &__bar {
+    position: absolute;
+    top: 0;
+    animation: ui-progress-bar-animation 1s infinite linear;
+  }
+}
+
+.dark-mode {
+  .ui-progress-bar {
+    .progress-bar-colors(@ui-color-dark-neutral, @ui-color-dark);
+
+    // Colors
+    // ====================
+    &.primary { .progress-bar-colors(@ui-color-primary, @ui-color-dark); }
+    &.accent { .progress-bar-colors(lighten(@ui-color-accent, 60%), @ui-color-dark); }
+    &.danger { .progress-bar-colors(@ui-color-danger, @ui-color-dark); }
+    &.warning { .progress-bar-colors(@ui-color-warning, @ui-color-dark); }
+    &.info { .progress-bar-colors(@ui-color-info, @ui-color-dark); }
+    &.success { .progress-bar-colors(@ui-color-success, @ui-color-dark); }
+  }
+}
+
+@keyframes ui-progress-bar-animation {
+  0% {
+    left: 0;
+    right: 100%;
+  }
+
+  50% {
+    left: 0;
+    right: 0;
+  }
+
+  100% {
+    left: 100%;
+    right: 0;
+  }
+}

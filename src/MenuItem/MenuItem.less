@@ -1,0 +1,52 @@
+@import "../shared/definitions";
+
+.ui-menu-item {
+  .h-box();
+  box-sizing: content-box;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 400;
+  padding: 12px 16px;
+  min-height: 24px;
+  position: relative;
+  text-decoration: none;
+  .ellipsis();
+  cursor: pointer;
+  margin: 0;
+  outline: none;
+  user-select: none;
+  appearance: none;
+  color: @ui-color-dark;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  &.disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  &-icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    pointer-events: none;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    margin-right: 16px;
+  }
+
+  &-text {
+    flex: 1 1 auto;
+    padding: 0 16px;
+    min-width: 0;
+
+    span {
+      display: block;
+      .ellipsis();
+    }
+  }
+
+  &.selected {
+    background-color: @ui-color-primary;
+    color: #fff;
+  }
+}

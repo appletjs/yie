@@ -1,0 +1,54 @@
+@import "../shared/definitions";
+
+.app-activity {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: @ui-color-light;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &-toolbar-holder {
+    height: @ui-th;
+    width: 100%;
+  }
+
+  // Transition Enter
+  // ====================
+
+  &-enter {
+    //transform: translateX(100%);
+    opacity: 0;
+  }
+
+  &-enter-active {
+    transition: all .16s;
+  }
+
+  &-enter-active,
+  &-enter-to {
+    //transform: translateX(0);
+    opacity: 1;
+  }
+
+  // Transition Leave
+  // ====================
+
+  &-leave {
+    //transform: translateX(0);
+    opacity: 1;
+  }
+
+  &-leave-active {
+    transition: all .16s;
+  }
+
+  &-leave-active,
+  &-leave-to {
+    //transform: translateX(-100%);
+    opacity: 0;
+  }
+}
